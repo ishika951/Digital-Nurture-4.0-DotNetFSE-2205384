@@ -1,44 +1,55 @@
-public interface Shape {
-    void draw();
+// Animal Interface
+interface Animal{
+    void makeSound();
 }
-public class Circle implements Shape {
-    @Override
-    public void draw() {
-        System.out.println("Drawing a Circle!");
-    }
-}
-public class Rectangle implements Shape {
-    @Override
-    public void draw() {
-        System.out.println("Drawing a Rectangle!");
+
+
+class Dog implements Animal {
+    public void makeSound() {
+        System.out.println("Woof!");
     }
 }
 
-public class ShapeFactory {
+class Cat implements Animal {
+    public void makeSound() {
+        System.out.println("Meow!");
+    }
+}
 
-    public Shape getShape(String shapeType) {
-        if (shapeType == null) {
+// Factory class
+class AnimalFactory {
+    public static Animal createAnimal(String animalType) {
+        if (animalType.equalsIgnoreCase("dog")) {
+            System.out.println("Dog Object created.");
+            return new Dog();
+        } else if (animalType.equalsIgnoreCase("cat")) {
+            System.out.println("Cat Object created.");
+            return new Cat();
+        } else {
+            // default case
+            System.out.println("Invalid animal type.");
             return null;
         }
-
-        if (shapeType.equalsIgnoreCase("CIRCLE")) {
-            return new Circle();
-        } else if (shapeType.equalsIgnoreCase("RECTANGLE")) {
-            return new Rectangle();
-        }
-
-        return null;
     }
 }
-public class Main {
+
+// Main class
+public class exercise2 {
     public static void main(String[] args) {
-        ShapeFactory shapeFactory = new ShapeFactory();
+        // Requesting Dog Obj.
+        System.out.println("Requesting Dog:");
+        Animal a1 = AnimalFactory.createAnimal("dog");
+        a1.makeSound();
 
-        Shape shape1 = shapeFactory.getShape("CIRCLE");
-        shape1.draw();  // Output: Drawing a Circle!
+        // Requesting Cat Obj.
+        System.out.println("Requesting Cat:");  
+        Animal a2 = AnimalFactory.createAnimal("cat");
+        a2.makeSound();
 
-        Shape shape2 = shapeFactory.getShape("RECTANGLE");
-        shape2.draw();  // Output: Drawing a Rectangle!
+        // Requesting Horse Obj.
+        System.out.println("Requesting Horse:");  
+        Animal a3 = AnimalFactory.createAnimal("horse");
+        if (a3 != null) a3.makeSound(); // Safe Check as a3 will return null
     }
 }
 
