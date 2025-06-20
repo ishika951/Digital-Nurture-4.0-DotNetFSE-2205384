@@ -37,7 +37,7 @@ class ECommercePlatform {
     }
 
     public void searchProduct(String keyword) {
-        System.out.println("\n🔍 Searching for: " + keyword);
+        System.out.println("\n Searching for: " + keyword);
         boolean found = false;
 
         for (Product p : products) {
@@ -48,7 +48,7 @@ class ECommercePlatform {
         }
 
         if (!found) {
-            System.out.println("❌ No products found matching: " + keyword);
+            System.out.println(" No products found matching: " + keyword);
         }
     }
 }
