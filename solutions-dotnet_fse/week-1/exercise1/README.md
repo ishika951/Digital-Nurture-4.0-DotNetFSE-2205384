@@ -1,34 +1,46 @@
-Singleton Pattern  
+# Singleton Pattern
 
-Overview
+---
 
-This assignment demonstrates the Singleton Design Pattern in C# using a simple console application.
+## Overview
 
-The Singleton pattern ensures that a class has only one instance and provides a global point of access to it.
+This assignment demonstrates the **Singleton Design Pattern** in C# using a simple console application.
+
+The Singleton pattern ensures that a **class has only one instance** and provides a **global point of access** to it.
 
 This is particularly useful in scenarios such as:
 
-.Managing shared resources (e.g., database connection, file manager)
-.Logger service
-.Configuration management
-.Ensuring a single access point for a service or component
+- Managing shared resources (e.g., database connection, file manager)
+- Logger service
+- Configuration management
+- Ensuring a single access point for a service or component
 
-Singleton Class
+
+## Singleton Class
+
+```csharp
 class Singleton
 {
+    // Static instance - created eagerly
     public static Singleton instance = new Singleton();
+
+    // Private constructor to prevent external instantiation
     private Singleton()
     {
         Console.WriteLine("Singleton Created.");
     }
- public void HelloWorld()
+
+    public void HelloWorld()
     {
         Console.WriteLine("Hello World!");
     }
 }
+```
 
-Main Class
 
+## Main Class
+
+```csharp
 class Program
 {
     static void Main(string[] args)
@@ -36,26 +48,24 @@ class Program
         Singleton.instance.HelloWorld();
     }
 }
+```
 
-How to Run
+## How to Run
 
-Prerequisites
+### Prerequisites
 
-.NET SDK installed
-.VS Code or any C# IDE
-.Any terminal or command prompt
+- .NET SDK installed
+- VS Code or any C# IDE
+- Any terminal or command prompt
 
-Compilation
+### Compilation
+
+```bash
 dotnet build
+```
 
-Execution
+### Execution
+
+```bash
 dotnet run
-Output
-Requesting Dog:
-Dog Object created.
-Woof!
-Requesting Cat:
-Cat Object created.
-Meow!
-Requesting Horse:
-Invalid animal type.
+```
